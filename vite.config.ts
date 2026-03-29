@@ -27,7 +27,6 @@ export default defineConfig(({ mode }) => {
         [VITE_API_PATH]: {
           target: VITE_BASE_URL,
           changeOrigin: true,
-          rewrite: (path) => path.replace(VITE_API_PATH, ''),
         },
       },
     },
