@@ -2,6 +2,7 @@ import 'axios';
 
 declare module 'axios' {
   interface AxiosRequestConfig {
+    showFailMessage?: boolean;
     showSuccessMessage?: boolean;
   }
 }
