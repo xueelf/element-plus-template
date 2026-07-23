@@ -8,7 +8,7 @@ import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import VueRouter from 'vue-router/vite';
 import ElementPlus from 'unplugin-element-plus/vite';
-import ElementHooksComposables from 'element-hooks/composables';
+import ElementHooks from 'element-hooks';
 import { VueRouterAutoImports } from 'vue-router/unplugin';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
@@ -27,7 +27,7 @@ export function createVitePlugins() {
         'vue',
         {
           'element-plus': ['ElMessage', 'ElMessageBox'],
-          'element-hooks': Object.keys(ElementHooksComposables),
+          'element-hooks': Object.keys(ElementHooks),
         },
       ],
     }),
@@ -54,7 +54,13 @@ export function createVitePlugins() {
     ElementPlus({
       useSource: true,
     }),
-    Vue(),
+    Vue({
+      template: {
+        transformAssetUrls: {
+          ElImage: ['src'],
+        },
+      },
+    }),
     VueJsx(),
     VueDevTools(),
     UnoCss(),
